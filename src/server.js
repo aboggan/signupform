@@ -8,7 +8,7 @@ createServer({
     this.post('/signup', (schema, request) => {
       let attrs = JSON.parse(request.requestBody)
       
-      console.log("data passed to the api", attrs.triggerError)
+      console.log("data passed to the api", attrs)
       
       let response = {
         status: "success",

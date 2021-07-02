@@ -25,10 +25,12 @@ export default function App() {
     try {
       const res = await fetch("/api/signup", {
         method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+        },
         body: JSON.stringify(data),
       });
       const response = await res.json();
-      //console.log("success", json)
       setServerResponse({ status: response.status, message: response.message });
     } catch (err) {
       console.log(err);
@@ -38,8 +40,6 @@ export default function App() {
   const onSubmit = (data) => {
     sendForm(data);
   };
-
-  console.log(serverResponse);
 
   const DropdownIndicator = (props) => {
     return (
@@ -52,6 +52,7 @@ export default function App() {
   return (
     <main>
       <div className="signup-form container">
+        {/** Success Message **/}
         {serverResponse.status === "success" ? (
           <div className="success-msg">
             <div className="success-msg__icon">
@@ -68,17 +69,19 @@ export default function App() {
           </div>
         ) : (
           <>
+            {/* Erorr Msg */}
             {serverResponse.status === "error" && (
               <div className="alert alert-danger pt-5 pb-5" role="alert">
                 {serverResponse.message}
               </div>
             )}
+            {/* Form */}
             <h2 className="pt-4">Sign up for email updates</h2>
-            <h6>*Indicates Required Field</h6>
+            <h6 className="mb-3 mt-3">*Indicates Required Field</h6>
             <form onSubmit={handleSubmit(onSubmit)} id="signupForm">
               <section>
                 <div className="row">
-                  <div className="col-sm-12 col-md-6">
+                  <div className="col-sm-12 col-md-6" role="First Name">
                     <InputText
                       errors={errors}
                       register={register}
@@ -89,7 +92,7 @@ export default function App() {
                       errorMsg={"First name is required"}
                     />
                   </div>
-                  <div className="col-sm-12 col-md-6">
+                  <div className="col-sm-12 col-md-6" role="Last Name">
                     <InputText
                       errors={errors}
                       register={register}
@@ -102,7 +105,7 @@ export default function App() {
                   </div>
                 </div>
                 <div className="row mt-3">
-                  <div className="col-sm-12 col-md-6">
+                  <div className="col-sm-12 col-md-6" role="E-mail">
                     <InputText
                       errors={errors}
                       register={register}
@@ -113,7 +116,7 @@ export default function App() {
                       errorMsg={"E-mail is required"}
                     />
                   </div>
-                  <div className="col-sm-12 col-md-6">
+                  <div className="col-sm-12 col-md-6" role="organization">
                     <InputText
                       errors={errors}
                       register={register}
@@ -126,7 +129,7 @@ export default function App() {
                   </div>
                 </div>
                 <div className="row mt-3">
-                  <div className="col-sm-12 col-md-6">
+                  <div className="col-sm-12 col-md-6" role="select EU resident">
                     <div className="error-msg">
                       {errors.resident && errors.resident.message}
                     </div>
@@ -159,7 +162,7 @@ export default function App() {
                   </div>
                 </div>
                 <div className="row mt-3">
-                  <div className="col-6">
+                  <div className="col-6" role="advances">
                     <CheckBox
                       errors={errors}
                       register={register}
@@ -169,7 +172,7 @@ export default function App() {
                       errorMsg={"Advances is required"}
                     />
                   </div>
-                  <div className="col-6">
+                  <div className="col-6" role="alerts">
                     <CheckBox
                       errors={errors}
                       register={register}
@@ -181,7 +184,7 @@ export default function App() {
                   </div>
                 </div>
                 <div className="row">
-                  <div className="col-6">
+                  <div className="col-6" role="other communications">
                     <CheckBox
                       errors={errors}
                       register={register}
@@ -206,15 +209,29 @@ export default function App() {
               <section>
                 <div className="row mt-5 pb-5">
                   <div className="col-sm-12 col-md-6">
-                    <button type="submit" className="col-sm-12 col-md-5">
+                    <button
+                      type="submit"
+                      className="col-sm-12 col-md-5"
+                      role="submit form"
+                    >
                       SUBMIT
                     </button>
 
-                    <button className="col-sm-12 col-md-5 white" type="reset">
+                    <button
+                      className="col-sm-12 col-md-5 mt-3 white"
+                      type="reset"
+                      role="reset form"
+                    >
                       RESET
                     </button>
                   </div>
                 </div>
+                {/* Error Msg */}
+                {serverResponse.status === "error" && (
+                  <div className="alert alert-danger pt-5 pb-5" role="alert">
+                    {serverResponse.message}
+                  </div>
+                )}
               </section>
             </form>
           </>
