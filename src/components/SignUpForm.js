@@ -50,7 +50,7 @@ export default function App() {
   };
 
   return (
-    <main>
+    <main role="main">
       <div className="signup-form container">
         {/** Success Message **/}
         {serverResponse.status === "success" ? (
@@ -71,7 +71,7 @@ export default function App() {
           <>
             {/* Erorr Msg */}
             {serverResponse.status === "error" && (
-              <div className="alert alert-danger pt-5 pb-5" role="alert">
+              <div className="alert alert-danger pt-5 pb-5">
                 {serverResponse.message}
               </div>
             )}
@@ -81,7 +81,7 @@ export default function App() {
             <form onSubmit={handleSubmit(onSubmit)} id="signupForm">
               <section>
                 <div className="row">
-                  <div className="col-sm-12 col-md-6" role="First Name">
+                  <div className="col-sm-12 col-md-6">
                     <InputText
                       errors={errors}
                       register={register}
@@ -92,7 +92,7 @@ export default function App() {
                       errorMsg={"First name is required"}
                     />
                   </div>
-                  <div className="col-sm-12 col-md-6" role="Last Name">
+                  <div className="col-sm-12 col-md-6">
                     <InputText
                       errors={errors}
                       register={register}
@@ -105,7 +105,7 @@ export default function App() {
                   </div>
                 </div>
                 <div className="row mt-3">
-                  <div className="col-sm-12 col-md-6" role="E-mail">
+                  <div className="col-sm-12 col-md-6">
                     <InputText
                       errors={errors}
                       register={register}
@@ -116,7 +116,7 @@ export default function App() {
                       errorMsg={"E-mail is required"}
                     />
                   </div>
-                  <div className="col-sm-12 col-md-6" role="organization">
+                  <div className="col-sm-12 col-md-6">
                     <InputText
                       errors={errors}
                       register={register}
@@ -129,7 +129,7 @@ export default function App() {
                   </div>
                 </div>
                 <div className="row mt-3">
-                  <div className="col-sm-12 col-md-6" role="select EU resident">
+                  <div className="col-sm-12 col-md-6">
                     <div className="error-msg">
                       {errors.resident && errors.resident.message}
                     </div>
@@ -162,7 +162,7 @@ export default function App() {
                   </div>
                 </div>
                 <div className="row mt-3">
-                  <div className="col-6" role="advances">
+                  <div className="col-6">
                     <CheckBox
                       errors={errors}
                       register={register}
@@ -172,7 +172,7 @@ export default function App() {
                       errorMsg={"Advances is required"}
                     />
                   </div>
-                  <div className="col-6" role="alerts">
+                  <div className="col-6">
                     <CheckBox
                       errors={errors}
                       register={register}
@@ -184,7 +184,7 @@ export default function App() {
                   </div>
                 </div>
                 <div className="row">
-                  <div className="col-6" role="other communications">
+                  <div className="col-6">
                     <CheckBox
                       errors={errors}
                       register={register}
@@ -209,18 +209,13 @@ export default function App() {
               <section>
                 <div className="row mt-5 pb-5">
                   <div className="col-sm-12 col-md-6">
-                    <button
-                      type="submit"
-                      className="col-sm-12 col-md-5"
-                      role="submit form"
-                    >
+                    <button type="submit" className="col-sm-12 col-md-5">
                       SUBMIT
                     </button>
 
                     <button
                       className="col-sm-12 col-md-5 mt-3 white"
                       type="reset"
-                      role="reset form"
                     >
                       RESET
                     </button>
