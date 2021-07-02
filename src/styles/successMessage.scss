@@ -1,0 +1,21 @@
+.success-msg {
+    color: black;
+    text-align: center;
+    font-size: 2em;
+    height: 100vh;
+    padding-top: 7rem;
+    &__icon {
+        svg {
+
+            font-size: 20px;
+        }
+        height: 80px;
+        width: 80px;
+        color: $primary-color;
+        text-align: center;
+        margin: 0 auto;
+    }
+    &__button {
+        margin: 0 auto;
+    }
+}

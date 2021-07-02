@@ -1,0 +1,63 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+.checkbox {
+  display: grid;
+  grid-template-columns: min-content auto;
+  grid-gap: 0.5em;
+  font-size: 1.5rem;
+  cursor: pointer;
+
+
+  &__label {
+    line-height: 1;
+    font-size: 16px;
+    padding-top: 4px;
+    position: relative;
+  }
+  &__control {
+    display: inline-grid;
+    width: 1.2em;
+    height: 1.2em;
+    transform: translateY(-0.05em);
+    background-color: $white;
+    border: 3px solid $input-default;
+    -webkit-box-shadow: $box-shadow;
+    box-shadow: $box-shadow;
+    svg {
+      color: $white;
+      transform: scale(0);
+    }
+  }
+
+  &__input {
+    display: grid;
+    grid-template-areas: "checkbox";
+
+    > * {
+      grid-area: checkbox;
+    }
+    input {
+      opacity: 0;
+      width: 1em;
+      height: 1em;
+      &:focus + .checkbox__control {  
+        box-shadow: 0 0 0 0.05em #fff, 0 0 0.15em 0.1em currentColor;
+      }
+    }
+  }
+
+  &__input input:checked + &__control svg {
+    transform: scale(1);
+    background-color: $primary-color;
+  }
+
+  &__input input:checked + &__control {
+    border-color: $primary-color;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+}

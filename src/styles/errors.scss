@@ -1,0 +1,10 @@
+.error {
+    background-color: $error-background;
+    border-color: $error-border !important;
+  }
+  .error-msg {
+    color: $error-message;
+    font-style: italic;
+    font-weight: 600;
+    min-height: 25px;
+  }
